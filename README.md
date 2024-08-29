@@ -28,6 +28,7 @@
  | prefecture_id        | integer | null: false             |
  | shipping_date_id     | integer | null: false             |
  | price                | integer | null: false             |
+ | user                 | references | foreign_key: true    |
  
 ### Association
 - belongs_to :user
