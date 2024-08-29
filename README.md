@@ -57,9 +57,8 @@
  | -------------------- |  ----      | ----------------------------- |
  | user                 | references | foreign_key: true             |
  | item                 | references | foreign_key: true             |
- | item_purcheses       | references | foreign_key: true             |
-
+ 
  ### Association
- - has_many :users
- - has_many :items
- - has_many :item_purcheses
+ - belongs_to :user
+ - belongs_to :item
+ - has_one :item_purchese
