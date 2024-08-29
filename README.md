@@ -14,7 +14,7 @@
 
  ### Association
  - has_many :item_purcheses
- - has_many :items, foreign_key: true
+ - has_many :items
 
 ## itemsテーブル
 
@@ -23,26 +23,28 @@
  | title                | string | null: false             |
  | context              | text   | null: false             |
  | category_id          | integer | null: false             |
- | item_status_id        | integer | null: false             |
+ | item_status_id       | integer | null: false             |
  | shipping_id          | integer | null: false             |
- | seller_prefecture_id  | integer | null: false             |
- | shipping_date_id      | integer | null: false             |
+ | prefecture_id        | integer | null: false             |
+ | shipping_date_id     | integer | null: false             |
  | price                | integer | null: false             |
  
 ### Association
 - belongs_to :user
-- belongs_to :item_purchese
+- has_one :item_purchese
 
 ## item_purchesesテーブル
 
  | Columm               |  Type  | Options                 |
  | -------------------- |  ----  | ----------------------- |
  | address_number       | string | null: false             |
- | purchese_prefecture_id| integer | null: false             |
+ | prefecture_id        | integer | null: false             |
  | address              | string | null: false             |
- | block_number          | string | null: false             |
- | building_name         | string |                         |
- | phone_number          | string | null: false             |
+ | block_number         | string | null: false             |
+ | building_name        | string |                         |
+ | phone_number         | string | null: false             |
+ | purchese_histories   | references | foreign_key: true   |
+
 
  ### Association
  - belongs_to :user
@@ -54,7 +56,9 @@
  | -------------------- |  ----      | ----------------------------- |
  | user                 | references | foreign_key: true             |
  | item                 | references | foreign_key: true             |
+ | item_purcheses       | references | foreign_key: true             |
 
  ### Association
  - has_many :users
  - has_many :items
+ - has_many :item_purcheses
