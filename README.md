@@ -13,7 +13,7 @@
 
 
  ### Association
- - has_many :item_purchases
+ - has_one :purchase_history
  - has_many :items
 
 ## itemsテーブル
@@ -32,7 +32,7 @@
  
 ### Association
 - belongs_to :user
-- has_one :item_purchase
+- has_one :purchase_history
 
 ## item_purchasesテーブル
 
