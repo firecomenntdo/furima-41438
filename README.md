@@ -44,12 +44,11 @@
  | block_number         | string | null: false             |
  | building_name        | string |                         |
  | phone_number         | string | null: false             |
- | purchese_histories   | references | foreign_key: true   |
+ | purchese_historie   | references | foreign_key: true   |
 
 
  ### Association
- - belongs_to :user
- - belongs_to :item
+ - belongs_to :purchese_historie
 
 ## purchese_histories
 
