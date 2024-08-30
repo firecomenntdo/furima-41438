@@ -39,12 +39,12 @@
  | Column               |  Type  | Options                 |
  | -------------------- |  ----  | ----------------------- |
  | address_number       | string | null: false             |
- | prefecture_id        | integer | null: false             |
+ | prefecture_id        | integer | null: false            |
  | address              | string | null: false             |
  | block_number         | string | null: false             |
  | building_name        | string |                         |
  | phone_number         | string | null: false             |
- | purchase_history   | references | foreign_key: true   |
+ | purchase_history     | references | null: false, foreign_key: true   |
 
 
  ### Association
@@ -54,8 +54,8 @@
 
  | Column               |  Type      | Options                       |
  | -------------------- |  ----      | ----------------------------- |
- | user                 | references | foreign_key: true             |
- | item                 | references | foreign_key: true             |
+ | user                 | references | null: false, foreign_key: true             |
+ | item                 | references | null: false, foreign_key: true             |
  
  ### Association
  - belongs_to :user
