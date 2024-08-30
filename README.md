@@ -1,6 +1,6 @@
 ## usersテーブル
 
- | Columm               |  Type  | Options                 |
+ | Column               |  Type  | Options                 |
  | -------------------- |  ----  | ----------------------- |
  | nickname             | string | null: false             |
  | email                | string |null: false,unique: true |
@@ -13,12 +13,12 @@
 
 
  ### Association
- - has_many :item_purcheses
+ - has_many :item_purchases
  - has_many :items
 
 ## itemsテーブル
 
- | Columm               |  Type  | Options                 |
+ | Column               |  Type  | Options                 |
  | -------------------- |  ----  | ----------------------- |
  | title                | string | null: false             |
  | context              | text   | null: false             |
@@ -32,11 +32,11 @@
  
 ### Association
 - belongs_to :user
-- has_one :item_purchese
+- has_one :item_purchase
 
-## item_purchesesテーブル
+## item_purchasesテーブル
 
- | Columm               |  Type  | Options                 |
+ | Column               |  Type  | Options                 |
  | -------------------- |  ----  | ----------------------- |
  | address_number       | string | null: false             |
  | prefecture_id        | integer | null: false             |
@@ -44,15 +44,15 @@
  | block_number         | string | null: false             |
  | building_name        | string |                         |
  | phone_number         | string | null: false             |
- | purchese_historie   | references | foreign_key: true   |
+ | purchase_history   | references | foreign_key: true   |
 
 
  ### Association
  - belongs_to :purchese_historie
 
-## purchese_histories
+## purchase_histories
 
- | Columm               |  Type      | Options                       |
+ | Column               |  Type      | Options                       |
  | -------------------- |  ----      | ----------------------------- |
  | user                 | references | foreign_key: true             |
  | item                 | references | foreign_key: true             |
@@ -60,4 +60,4 @@
  ### Association
  - belongs_to :user
  - belongs_to :item
- - has_one :item_purchese
+ - has_one :item_purchase
