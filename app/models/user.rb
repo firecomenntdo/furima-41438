@@ -6,8 +6,7 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'は英字と数字を含めてください' },
-                       length: { minimum: 6 }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'は英字と数字を含めてください' }
   validates :password_confirmation, presence: true
   validates :lastname, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
   validates :firstname, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
