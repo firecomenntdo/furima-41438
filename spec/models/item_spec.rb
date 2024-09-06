@@ -27,27 +27,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Context can't be blank"
       end
       it 'category_idが空だと登録できない' do
-        @item.category_id = ''
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Category can't be blank"
       end
       it 'item_status_idが空だと登録できない' do
-        @item.item_status_id = ''
+        @item.item_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Item status can't be blank"
       end
       it 'shipping_idが空だと登録できない' do
-        @item.shipping_id = ''
+        @item.shipping_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Shipping can't be blank"
       end
       it 'prefecture_idが空だと登録できない' do
-        @item.prefecture_id = ''
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Prefecture can't be blank"
       end
       it 'shipping_date_idが空だと登録できない' do
-        @item.shipping_date_id = ''
+        @item.shipping_date_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Shipping date can't be blank"
       end
@@ -80,6 +80,11 @@ RSpec.describe Item, type: :model do
         @item.price = '99999999'
         @item.valid?
         expect(@item.errors.full_messages).to include 'Price is invalid'
+      end
+      it 'userが紐づいていなければ登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
