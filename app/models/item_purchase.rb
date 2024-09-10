@@ -1,3 +1,3 @@
 class ItemPurchase < ApplicationRecord
-  belongs_to :purchese_historie
+  belongs_to :purchase_history
 end

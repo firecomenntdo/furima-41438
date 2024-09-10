@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_10_064919) do
     t.string "address", null: false
     t.string "block_number", null: false
     t.string "building_name"
+    t.string "phone_number", null: false
     t.bigint "purchase_history_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

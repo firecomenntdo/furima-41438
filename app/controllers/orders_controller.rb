@@ -1,16 +1,26 @@
 class OrdersController < ApplicationController
+  before_action :set_item, only: [:index, :create]
   def index
-    @item = Item.find(params[:item_id])
+    @form_purchase = FormPurchase.new
   end
 
   def create
-    @item = Item.create(item_params)
+    @form_purchase = FormPurchase.new(item_params)
+    if @form_purchase.save
+      redirect_to root_path
+    else
+      render :index, status: :unprocessable_entity
+    end
   end
 end
 
 private
 
+def set_item
+  @item = Item.find(params[:item_id])
+end
+
 def item_params
-  params.require(:form_purchase).permit(:address_number, :prefecture_id, :address, :block_number, :building_name, :phone_number, :purchase_history,
-                                        :user, :item)
+  params.require(:form_purchase).permit(:address_number, :prefecture_id, :address, :block_number, :building_name, :phone_number, :purchase_history_id,
+                                        :user, :item).merge(user: current_user, item: @item)
 end

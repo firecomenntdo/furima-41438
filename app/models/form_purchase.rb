@@ -15,7 +15,8 @@ class FormPurchase
   end
 
   def save
+    purchase_history = PurchaseHistory.create(user:, item:)
     ItemPurchase.create(address_number:, prefecture_id:, address:, block_number:, building_name:, phone_number:,
-                        purchase_history:)
+                        purchase_history_id: purchase_history.id)
   end
 end
