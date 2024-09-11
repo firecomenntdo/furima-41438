@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
       redirect_to item_path
     else
       render :edit, status: :unprocessable_entity
-      puts @item.errors.full_messages
+      # puts @item.errors.full_messages
     end
   end
 

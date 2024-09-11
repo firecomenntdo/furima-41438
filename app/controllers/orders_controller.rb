@@ -6,9 +6,11 @@ class OrdersController < ApplicationController
 
   def create
     @form_purchase = FormPurchase.new(item_params)
-    if @form_purchase.save
+    if @form_purchase.valid?
+      @form_purchase.save
       redirect_to root_path
     else
+      Rails.logger.info(@form_purchase.errors.full_messages)
       render :index, status: :unprocessable_entity
     end
   end

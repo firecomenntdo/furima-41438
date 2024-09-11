@@ -1,6 +1,6 @@
 class FormPurchase
   include ActiveModel::Model
-  attr_accessor :address_number, :prefecture_id, :address, :block_number, :building_name, :phone_number, :purchase_history,
+  attr_accessor :address_number, :prefecture_id, :address, :block_number, :building_name, :phone_number,
                 :user, :item
 
   with_options presence: true do
@@ -9,7 +9,6 @@ class FormPurchase
     validates :address
     validates :block_number
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'は11字以下で入力してください' }
-    validates :purchase_history
     validates :user
     validates :item
   end
