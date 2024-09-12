@@ -63,8 +63,13 @@ RSpec.describe FormPurchase, type: :model do
         @form_purchase.valid?
         expect(@form_purchase.errors.full_messages).to include 'Phone number は11字以下で入力してください'
       end
-      it '電話番号が11桁以上だと購入できない' do
-        @form_purchase.phone_number = '111-1111-11111'
+      it '電話番号が9桁以下だと購入できない' do
+        @form_purchase.phone_number = '11111'
+        @form_purchase.valid?
+        expect(@form_purchase.errors.full_messages).to include 'Phone number は11字以下で入力してください'
+      end
+      it '電話番号が12桁以上だと購入できない' do
+        @form_purchase.phone_number = '1111111111111'
         @form_purchase.valid?
         expect(@form_purchase.errors.full_messages).to include 'Phone number は11字以下で入力してください'
       end
