@@ -5,7 +5,7 @@ RSpec.describe FormPurchase, type: :model do
     user = FactoryBot.create(:user)
     item = FactoryBot.create(:item)
     sleep 0.1
-    @form_purchase = FactoryBot.build(:form_purchase, user: user.id, item: item.id)
+    @form_purchase = FactoryBot.build(:form_purchase, user_id: user.id, item_id: item.id)
   end
   describe '商品購入機能' do
     context '商品購入できる時' do
@@ -79,14 +79,24 @@ RSpec.describe FormPurchase, type: :model do
         expect(@form_purchase.errors.full_messages).to include 'Phone number は11字以下で入力してください'
       end
       it 'userと紐づいていないと購入できない' do
-        @form_purchase.user = nil
+        @form_purchase.user_id = nil
         @form_purchase.valid?
         expect(@form_purchase.errors.full_messages).to include("User can't be blank")
       end
       it 'itemと紐づいていないと購入できない' do
-        @form_purchase.item = nil
+        @form_purchase.item_id = nil
         @form_purchase.valid?
         expect(@form_purchase.errors.full_messages).to include("Item can't be blank")
+      end
+      it 'tokenが空だと購入できない' do
+        @form_purchase.token = nil
+        @form_purchase.valid?
+        expect(@form_purchase.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'priceが空だと購入できない' do
+        @form_purchase.price = nil
+        @form_purchase.valid?
+        expect(@form_purchase.errors.full_messages).to include("Price can't be blank")
       end
     end
   end

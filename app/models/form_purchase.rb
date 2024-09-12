@@ -11,6 +11,7 @@ class FormPurchase
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'は11字以下で入力してください' }
     validates :user_id
     validates :item_id
+    validates :price
     validates :token
   end
 

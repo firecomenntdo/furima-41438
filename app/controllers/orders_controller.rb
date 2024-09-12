@@ -1,7 +1,13 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
   def index
-    @form_purchase = FormPurchase.new
+    if @item.purchase_history.present? || (user_signed_in? && @item.user == current_user) || (user_signed_in? == false)
+
+      redirect_to items_path
+    else
+      gon.public_key = ENV['PAYJP_PUBLIC_KEY']
+      @form_purchase = FormPurchase.new
+    end
   end
 
   def create
@@ -29,7 +35,7 @@ def item_params
 end
 
 def pay_item
-  Payjp.api_key = 'sk_test_2e892d4e0bf43218e97d3db3'
+  Payjp.api_key = ENV['PAYJP_SECRET_KEY']
   Payjp::Charge.create(
     amount: @form_purchase.price, # 商品の値段
     card: @form_purchase.token, # カードトークン
