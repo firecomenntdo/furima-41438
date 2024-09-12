@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
   def index
-    if @item.purchase_history.present? || (user_signed_in? && @item.user == current_user) || (user_signed_in? == false)
-
+    if user_signed_in? == false
+      redirect_to new_user_session_url
+    elsif @item.purchase_history.present? || (user_signed_in? && @item.user == current_user)
       redirect_to items_path
     else
       gon.public_key = ENV['PAYJP_PUBLIC_KEY']
