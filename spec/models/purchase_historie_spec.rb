@@ -1,5 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe PurchaseHistorie, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe PurchaseHistory, type: :model do
+  before do
+    @purchase_history = FactoryBot.build(:purchase_history)
+  end
 end
