@@ -1,7 +1,7 @@
 class FormPurchase
   include ActiveModel::Model
   attr_accessor :address_number, :prefecture_id, :address, :block_number, :building_name, :phone_number,
-                :user_id, :item_id, :token, :price
+                :user_id, :item_id, :token
 
   with_options presence: true do
     validates :address_number, format: { with: /\A\d{3}-\d{4}\z/, message: 'はハイフンと数字を含めてください' }
