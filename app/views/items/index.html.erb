@@ -132,7 +132,11 @@
     <li class='list'>
       <%= link_to item_path(item) do %>
         <div class='item-img-content'>
-          <%= image_tag item.image, class: "item-img" %>
+          <% if @item.image.present? %>
+           <%= image_tag item.image, class: "item-img" %>
+          <% else%>
+           <%= image_tag 'item-sample.png' %>
+          <% end%>
           <% if item.purchase_history.present? %>
              <div class='sold-out'>
               <span>Sold Out!!</span>
