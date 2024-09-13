@@ -14,4 +14,5 @@ class User < ApplicationRecord
   validates :birth, presence: { message: 'を入力してください' }
 
   has_many :items
+  has_many :purchase_histories
 end
